@@ -1,6 +1,7 @@
 <?php
-// Include database configuration
-require_once "db_config.php";
+session_start();
+
+include "db_config.php";
 
 // Check if the login form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
