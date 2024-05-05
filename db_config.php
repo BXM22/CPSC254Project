@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$username = " ";
-$password = " ";
-$database = " ";
+$username = "root";
+$password = "Nintendo64!";
+$database = "Recipe.sql";
 
 $conn = new mysqli($host, $username, $password, $database);
 
