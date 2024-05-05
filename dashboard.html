@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard - Recipe Management</title>
+	<link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+	<header>
+    	<!-- Header content goes here -->
+	</header>
+
+	<main>
+    	<div class="container">
+        	<h2>Dashboard</h2>
+
+        	<!-- Add Recipe Section -->
+        	<section id="addRecipeSection">
+            	<h3>Add Recipe</h3>
+            	<form action="add_recipe.php" method="POST">
+                	<label for="title">Title:</label>
+                	<input type="text" id="title" name="title" required>
+               	 
+                	<label for="description">Description:</label>
+                	<textarea id="description" name="description" required></textarea>
+               	 
+                	<button type="submit">Add Recipe</button>
+            	</form>
+        	</section>
+
+        	<!-- View Recipes Section -->
+        	<section id="viewRecipesSection">
+            	<h3>View Recipes</h3>
+            	<ul>
+                	<!-- List of recipes goes here -->
+                	<li>Recipe 1</li>
+                	<li>Recipe 2</li>
+                	<!-- Example placeholders, replace with actual data from database -->
+            	</ul>
+        	</section>
+
+        	<!-- Edit Recipe Section -->
+        	<section id="editRecipeSection">
+            	<h3>Edit Recipe</h3>
+            	<form action="edit_recipe.php" method="POST">
+                	<input type="hidden" id="editRecipeId" name="recipe_id">
+                	<label for="editTitle">Title:</label>
+                	<input type="text" id="editTitle" name="title" required>
+               	 
+                	<label for="editDescription">Description:</label>
+                	<textarea id="editDescription" name="description" required></textarea>
+               	 
+                	<button type="submit">Save Changes</button>
+            	</form>
+        	</section>
+    	</div>
+	</main>
+
+	<footer>
+    	<!-- Footer content goes here -->
+	</footer>
+
+	<script src="scripts.js"></script> <!-- Link to your JavaScript file -->
+	<script>
+    	// Function to show Add Recipe section
+    	function showAddRecipe() {
+        	document.getElementById("addRecipeSection").style.display = "block";
+        	document.getElementById("viewRecipesSection").style.display = "none";
+        	document.getElementById("editRecipeSection").style.display = "none";
+    	}
+
+    	// Function to show View Recipes section
+    	function showViewRecipes() {
+        	document.getElementById("addRecipeSection").style.display = "none";
+        	document.getElementById("viewRecipesSection").style.display = "block";
+        	document.getElementById("editRecipeSection").style.display = "none";
+    	}
+
+    	// Function to show Edit Recipe section
+    	function showEditRecipe(recipeId, title, description) {
+        	document.getElementById("editRecipeSection").style.display = "block";
+        	document.getElementById("addRecipeSection").style.display = "none";
+        	document.getElementById("viewRecipesSection").style.display = "none";
+        	// Populate the form with recipe details
+        	document.getElementById("editRecipeId").value = recipeId;
+        	document.getElementById("editTitle").value = title;
+        	document.getElementById("editDescription").value = description;
+    	}
+	</script>
+</body>
+</html>
