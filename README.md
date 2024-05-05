@@ -26,6 +26,6 @@ secure and efficient Linux-based server infrastructure to host it. Here's an ove
 > - Prepare a comprehensive project presentation that showcases your web application and the Linux-based server infrastructure you've built.
 > - Emphasize the role of open source software, discuss software licenses, and highlight the significance of Linux in modern web development.
 
->> * Build and host the application on a Linux based server/machine.
+##### Build and host the application on a Linux based server/machine.
 >
->> * This project offers you a unique opportunity to gain hands-on experience in creating a real-world web application while simultaneously exploring the diverse world of Linux and open-source software. It's a journey of learning, innovation, and skill development that will equip you with valuable expertise for future technology projects.
+##### This project offers you a unique opportunity to gain hands-on experience in creating a real-world web application while simultaneously exploring the diverse world of Linux and open-source software. It's a journey of learning, innovation, and skill development that will equip you with valuable expertise for future technology projects.
