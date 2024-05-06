@@ -24,20 +24,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     	$hashed_password = $row["password"];
 
     	// Verify password
-    	if ($password == $hashed_password) {
+    	if (password_verify($password, $hashed_password)) {
         	// Password is correct, start a session for the user
-        	session_start();
         	$_SESSION["user_id"] = $user_id;
         	$_SESSION["username"] = $username;
         	header("Location: dashboard.html"); // Redirect to dashboard page
         	exit();
     	} else {
-        	// Password is incorrect, display error message
-        	echo "Incorrect password";
+        	// Password is incorrect, redirect back to login page with error message
+        	header("Location: login.html?error=incorrect_password");
+        	exit();
     	}
 	} else {
-    	// User does not exist, display error message
-    	echo "User not found";
+    	// User does not exist, redirect back to login page with error message
+    	header("Location: login.html?error=user_not_found");
+    	exit();
 	}
 
 	// Close statement
