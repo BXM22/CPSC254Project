@@ -1,33 +1,33 @@
 <?php
 // Include database configuration
-require_once "db_config.php";
+include 'db_config.php';
 
-// Check if the edit recipe form is submitted
+// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// Connect to the database
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	// Check connection
+	if ($conn->connect_error) {
+    	die("Connection failed: " . $conn->connect_error);
+	}
+
 	// Retrieve form data
-	$recipe_id = $_POST["recipe_id"];
+	$id = $_POST["id"];
 	$title = $_POST["title"];
 	$description = $_POST["description"];
+	$ingredients = $_POST["ingredients"];
+	$instructions = $_POST["instructions"];
 
-	// Prepare SQL statement to update recipe in the database
-	$sql = "UPDATE recipes SET title=?, description=? WHERE recipe_id=?";
-	$stmt = $conn->prepare($sql);
-	$stmt->bind_param("ssi", $title, $description, $recipe_id);
-
-	// Execute the statement
-	if ($stmt->execute()) {
-    	// Recipe updated successfully, redirect to view recipes page or dashboard
-    	header("Location: view_recipes.php");
-    	exit();
+	// Update recipe in the database
+	$sql = "UPDATE Recipe SET title='$title', description='$description', ingredients='$ingredients', instructions='$instructions' WHERE id=$id";
+	if ($conn->query($sql) === TRUE) {
+    	echo "Recipe updated successfully";
 	} else {
-    	// Error occurred, display error message
     	echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 
-	// Close statement
-	$stmt->close();
+	// Close connection
+	$conn->close();
 }
-
-// Close connection
-$conn->close();
 ?>

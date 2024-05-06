@@ -1,19 +1,29 @@
 <?php
 // Include database configuration
-require_once "db_config.php";
+include 'db_config.php';
 
-// Retrieve all recipes from the database
-$sql = "SELECT * FROM recipes";
+// Connect to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to fetch recipes
+$sql = "SELECT * FROM Recipe";
 $result = $conn->query($sql);
 
-// Check if there are any recipes
+// Display recipes
 if ($result->num_rows > 0) {
-	// Output data of each row
-	while($row = $result->fetch_assoc()) {
-    	echo "Recipe Title: " . $row["title"]. " - Description: " . $row["description"]. "<br>";
+	echo "<h2>Recipes</h2>";
+	echo "<ul>";
+	while ($row = $result->fetch_assoc()) {
+    	echo "<li>" . $row["title"] . " - " . $row["description"] . "</li>";
 	}
+	echo "</ul>";
 } else {
-	echo "No recipes found";
+	echo "No recipes found.";
 }
 
 // Close connection
